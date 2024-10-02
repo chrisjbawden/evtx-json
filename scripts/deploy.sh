@@ -29,9 +29,32 @@ echo " "
 #setup app 
 echo "Grabbing app..."
 
-mkdir /opt/streamlit
-mkdir /opt/streamlit/evtx-json
-curl https://raw.githubusercontent.com/chrisjbawden/evtx-json/refs/heads/main/app/app.py -o /opt/streamlit/evtx-json/app.py
+#!/bin/bash
+
+# Check if /opt/streamlit directory exists, if not create it
+if [ ! -d "/opt/streamlit" ]; then
+    echo "Creating /opt/streamlit directory..."
+    mkdir -p /opt/streamlit
+else
+    echo "/opt/streamlit directory already exists."
+fi
+
+# Check if /opt/streamlit/evtx-json directory exists, if not create it
+if [ ! -d "/opt/streamlit/evtx-json" ]; then
+    echo "Creating /opt/streamlit/evtx-json directory..."
+    mkdir -p /opt/streamlit/evtx-json
+else
+    echo "/opt/streamlit/evtx-json directory already exists."
+fi
+
+# Check if the app.py file exists in /opt/streamlit/evtx-json, if not download it
+if [ ! -f "/opt/streamlit/evtx-json/app.py" ]; then
+    echo "Downloading app.py to /opt/streamlit/evtx-json..."
+    curl https://raw.githubusercontent.com/chrisjbawden/evtx-json/refs/heads/main/app/app.py -o /opt/streamlit/evtx-json/app.py
+else
+    echo "app.py already exists in /opt/streamlit/evtx-json."
+fi
+
 
 echo " "
 
