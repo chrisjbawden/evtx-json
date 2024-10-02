@@ -29,6 +29,7 @@ echo " "
 #setup app 
 echo "Grabbing app..."
 
+mkdir /opt/streamlit
 mkdir /opt/streamlit/evtx-json
 curl https://raw.githubusercontent.com/chrisjbawden/evtx-json/refs/heads/main/app/app.py -o /opt/streamlit/evtx-json/app.py
 
