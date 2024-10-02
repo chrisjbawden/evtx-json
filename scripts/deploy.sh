@@ -15,7 +15,7 @@ echo " "
 
 # Install Streamlit, Evtx, and xmltodict system-wide
 echo "Installing Streamlit, Evtx, and xmltodict..."
-pip3 install streamlit Evtx xmltodict
+pip3 install streamlit Evtx xmltodict --break-system-packages
 
 echo " "
 
@@ -23,13 +23,6 @@ echo " "
 echo "Cleaning up..."
 apt-get clean
 
-echo " "
-
-# Verify installation
-echo "Verifying installations..."
-streamlit --version
-pip3 show Evtx
-pip3 show xmltodict
 
 echo " " 
 
