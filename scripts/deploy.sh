@@ -15,7 +15,7 @@ echo " "
 
 # Install Streamlit, Evtx, and xmltodict system-wide
 echo "Installing Streamlit, Evtx, and xmltodict..."
-pip3 install streamlit Evtx xmltodict --break-system-packages
+pip install streamlit python-Evtx xmltodict --break-system-packages
 
 echo " "
 
