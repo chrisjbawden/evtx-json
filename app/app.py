@@ -1,6 +1,6 @@
 import streamlit as st
 import json
-from Evtx.Evtx import Evtx
+import Evtx.Evtx
 import xmltodict
 
 # Streamlit app interface
