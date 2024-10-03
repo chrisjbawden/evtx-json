@@ -1,10 +1,10 @@
 import streamlit as st
 import json
-import Evtx.Evtx
+from Evtx.Evtx import Evtx
 import xmltodict
+import os
 
 # Streamlit app interface
-st.title("EVTX to JSON Converter")
 
 # File uploader
 uploaded_file = st.file_uploader("Choose an EVTX file", type="evtx")
@@ -13,8 +13,15 @@ uploaded_file = st.file_uploader("Choose an EVTX file", type="evtx")
 if uploaded_file is not None:
     st.write("Processing your file...")
     
-    # Reading and parsing the EVTX file
-    with Evtx(uploaded_file) as log:
+    # Save the uploaded file to a temporary path
+    temp_file_path = os.path.join("/tmp", uploaded_file.name)
+    
+    # Write the uploaded file to the temporary path
+    with open(temp_file_path, "wb") as f:
+        f.write(uploaded_file.getbuffer())
+    
+    # Now process the EVTX file using the saved temporary path
+    with Evtx(temp_file_path) as log:
         records = []
         for record in log.records():
             # Converting each record from XML to JSON format
